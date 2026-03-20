@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Equipo - HTML Plano</title>
+</head>
+<body>
+
+  <section id="body">
+    <section id="mainView">
+      <h2>Gestión del Equipo de Fútbol</h2>
+      <button id="btnAgregar">Reportar Nuevo Juego</button>
+      <br><br>
+  <div id="salida">
+    Porcentaje de juegos ganados: <span id="lblPorcentaje">0.00</span>%<br>
+    Total de registros procesados: <span id="lblTotalJuegos">0</span>
+  </div>
+  </section>
+
+  <section id="articulo" hidden style="margin-top: 20px; border: 1px solid #ccc; padding: 15px; width: 300px;">
+    <h5 id="articulo_lblArticulo">Procesar Juego</h5>
+     <label>Resultado (1=Ganado, 0=Perdido):</label>
+     <input type="number" id="inResultado">
+    </label>
+    <br><br>
+    <button id="juego_btCancelar">Cancelar</button>
+    <button id="juego_btAceptar">Aceptar</button>
+  </section>
+
+  <script type="module">
+    import Cl_cEquipo from "./dist/controllers/Cl_cEquipo.js";
+    import Cl_cJuego from "./dist/controllers/Cl_cjuego.js";
+    
+    import Cl_vEquipoPlain from "./dist/views/Cl_vEquipoPlain.js";
+    import Cl_vJuegoPlain from "./dist/views/Cl_vJuegoPlain.js";
+
+    const vistaEquipo = new Cl_vEquipoPlain();
+    const vistaJuego = new Cl_vJuegoPlain();
+
+    const controladorJuego = new Cl_cJuego(vistaJuego);
+    new Cl_cEquipo(vistaEquipo, controladorJuego);
+  </script>
+</body>
+</html>
